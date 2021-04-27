@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+'''Python Module'''
+
+
 def canUnlockAll(boxes):
     '''
     Script that checks if all boxes can be opened with given keys
