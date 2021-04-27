@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 def canUnlockAll(boxes):
+    '''
+    Script that checks if all boxes can be opened with given keys
+    '''
     if len(boxes) == 0:
         return False
     open = []
