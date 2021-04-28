@@ -1,5 +1,11 @@
-#include "lists.h"
 #include <stdlib.h>
+#include "lists.h"
+/**
+ * insert_node - insert a node into a linked list
+ * @head: pointer to list
+ * number: data of the node
+ * Return: addrres to new node or NULL if it fails
+ **/
 
 listint_t *insert_node(listint_t **head, int number) {
 if (head == NULL)
