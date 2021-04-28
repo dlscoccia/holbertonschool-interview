@@ -16,5 +16,4 @@ def canUnlockAll(boxes):
                 if key not in open:
                     open.append(key)
         idx += 1
-    print(len(open), len(boxes))
     return True if len(open) == len(boxes) else False
