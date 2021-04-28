@@ -8,14 +8,13 @@ def canUnlockAll(boxes):
     '''
     if len(boxes) == 0:
         return False
-    open = []
-
+    open = [0, ]
+    idx = 0
     for box in boxes:
-        if len(box) == 0:
-            break
         for key in box:
-            if key > 0 and key <= len(boxes) - 1:
+            if key <= len(boxes) - 1 and key != idx:
                 if key not in open:
                     open.append(key)
-
-    return True if len(open) == len(boxes) - 1 else False
+        idx += 1
+    print(len(open), len(boxes))
+    return True if len(open) == len(boxes) else False
