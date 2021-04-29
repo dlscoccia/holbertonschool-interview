@@ -25,12 +25,12 @@ new_node->n = number;
 new_node->next = NULL;
 auxiliar = *head;
 
-if (new_node->n <= auxiliar->n)
+if (new_node->n <= auxiliar->n || auxiliar == NULL)
 {
 new_node->next = *head;
 *head = new_node;
 return (new_node);
-}
+} else {
 while (auxiliar->next != NULL)
 {
 if (auxiliar->next->n >= new_node->n)
@@ -41,9 +41,5 @@ return (new_node);
 }
 auxiliar = auxiliar->next;
 }
-if (auxiliar->next == NULL)
-{
-auxiliar->next = new_node;
-new_node->next = NULL;
-}
 return (new_node);
+}
