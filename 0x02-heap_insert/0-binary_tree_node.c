@@ -1,19 +1,24 @@
 #include "binary_trees.h"
 
 /**
- * struct binary_tree_s - Binary tree node
+ * binary_tree_node - Stores recursively each level in an array of strings
  *
- * @value: Integer stored in the node
  * @parent: Pointer to the parent node
- * @left: Pointer to the left child node
- * return : Pointer to the right child node
+ * @value: Value of the new node
+ *
+ * Return: Pointer to the new node
  */
 
-binary_tree_t *binary_tree_node(binary_tree_t *parent, int value) {
-  binary_tree_t* node = (binary_tree_t *)malloc(sizeof(binary_tree_t));
-  node->n = value;
-  node->left = NULL;
-  node->right = NULL;
-  return node;
-  
+binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
+{
+binary_tree_t *node = malloc(sizeof(binary_tree_t));
+if (node)
+{
+node->n = value;
+node->parent = parent;
+node->left = NULL;
+node->right = NULL;
+return (node);
+}
+return (NULL);
 }
