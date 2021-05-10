@@ -4,18 +4,14 @@
 
 def minOperations(n):
     '''Script to calculate the minimun number of ops needed'''
-    # Smallest divisible number for given n
-    min_chunk = [2, 3, 5, 7]
-    # Num of operations needed
-    min_ops = 0
-    # We calculate how many chunks we need to reduce n to 1
-    if (n == 1):
-        min_ops = 1
-    elif (n >= 2):
-        while n != 1:
-            for num in min_chunk:
-                # if it is divisible, we add the chunk and reduce n
-                if (n % num == 0):
-                    min_ops += num
-                    n = n/num
-    return min_ops
+    number_ops = 0
+    # We try to reduce n to 1
+    while n != 1:
+        for num in range(2, n+1):
+            # If n can be divisible we take account of that op and reduce n
+            if (n % num == 0):
+                # We acumulate the number of operations needed
+                number_ops += num
+                # And reduce n
+                n = n // num
+    return number_ops
