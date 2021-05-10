@@ -11,19 +11,21 @@
 
 heap_t *heap_insert(heap_t **root, int value)
 {
-
-    if (*root == NULL)
-    {
-        *root = binary_tree_node(*root, value);
-        return *root;
-    }
-    else
-    {
-        if (value < (*root)->n) {
-            heap_insert(&(*root)->left, value);
-        } else {
-            heap_insert(&(*root)->right, value);
-        }
-    }
-    return (NULL);
+if (*root == NULL)
+{
+*root = binary_tree_node(*root, value);
+return (*root);
+}
+else
+{
+if (value < (*root)->n)
+{
+heap_insert(&(*root)->left, value);
+}
+else
+{
+heap_insert(&(*root)->right, value);
+}
+}
+return (NULL);
 }
