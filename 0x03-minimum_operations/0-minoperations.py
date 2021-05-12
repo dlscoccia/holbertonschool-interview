@@ -13,6 +13,6 @@ def minOperations(n):
             number_ops += idx
             # And reduce n
             n = n / idx
-        else :
-            idx +=1
+        else:
+            idx += 1
     return number_ops
