@@ -4,13 +4,21 @@
 
 def validUTF8(data):
     '''Validator for UTF-8 encoding'''
-    bytes = 0
-    for int in data:
-        int = bin(int).replace('0b', '').rjust(8, '0')
-        if bytes != 0:
-            bytes -= 1
-            if not int.startswith('10'):
+    index = 0
+    for num in data:
+        byte = format(num, '#010b')[-8:]
+        if index == 0:
+            for b in byte:
+                if b == '0':
+                    break
+                index += 1
+            if index == 0:
+                continue
+            if index == 1 or index > 4:
                 return False
-        elif int[0] == '1':
-            bytes = len(int.split('0')[0]) - 1
-    return True
+        else:
+            if not (byte[0] == '1' and byte[1] == '0'):
+                return False
+        index -= 1
+
+    return index == 0

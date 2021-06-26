@@ -46,13 +46,4 @@ for line in sys.stdin:
             except:
                 continue
     except KeyboardInterrupt:
-        lineparser(lines)
-        for line in parsed_lines:
-            total_size += int(line[1])
-        lines = []
-        print("File size: {}".format(total_size))
-        for code in codes:
-            try:
-                print("{}: {}".format(code, number_of_lines[code]))
-            except:
-                continue
+        continue
