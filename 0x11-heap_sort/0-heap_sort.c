@@ -1,73 +1,62 @@
 #include "sort.h"
 /**
- * swap - swaps two positions
- * @array1: array1
- * @array2: array2
- * Return: is a void
+ * swap - swaps elements
+ *
+ * @i: first element
+ * @j: second element
  */
-void swap(int *array1, int *array2)
+void swap(int *i, int *j)
 {
-	int temp;
-
-	temp = *array1;
-	*array1 = *array2;
-	*array2 = temp;
+	int temp = *i;
+	*i = *j;
+	*j = temp;
 }
 /**
- * heap - makes array into a heap
- * @array: ptr to int array
- * @size: size of array
- * @i: max point
- * @length: size of the array in heap_sort fn
- * Return: is a void
+ * build_heap - builds heap out of array
+ *
+ * @array: the array
+ * @i: heap size
+ * @j: root index
+ * @size: Number of elements of the array
  */
-void heap(int *array, int size, int i, int length)
+void build_heap(int *array, int i, int j, size_t size)
 {
-	int max = i;
-	int left = 2 * i + 1;
-	int right = 2 * i + 2;
+	int max = j;
+	int left = j * 2 + 1;
+	int right = j * 2 + 2;
 
-	if (left < size && array[max] < array[left])
-	{
+	if (left < i && array[left] > array[max])
 		max = left;
-	}
 
-	if (right < size && array[max] < array[right])
-	{
+	if (right < i && array[right] > array[max])
 		max = right;
-	}
 
-	if (max != i)
+	if (max != j)
 	{
-		swap(&array[i], &array[max]);
-		print_array(array, length);
-		heap(array, size, max, length);
+		swap(&array[j], &array[max]);
+		print_array(array, size);
+		build_heap(array, i, max, size);
 	}
 }
-
 /**
- * heap_sort - sort and array (heap method)
- * @array: array to sort
- * @size: size of array
- * Return: is a void
+ * heap_sort - sorts an array of integers in ascending order
+ * using the Heap sort algorithm
+ *
+ * @array: an unordered array
+ * @size: Number of elements of the array
  */
 void heap_sort(int *array, size_t size)
 {
 	int i;
 
-	if (!size || !array)
-		return;
 	for (i = size / 2 - 1; i >= 0; i--)
+		build_heap(array, size, i, size);
+
+	for (i = size - 1; i >= 0; i--)
 	{
-		heap(array, size, i, size);
-	}
-	for (i = size - 1; i > 0; i--)
-	{
-		if (array[0] >= array[i])
-		{
-			swap(&array[0], &array[i]);
+		swap(&array[0], &array[i]);
+		if (i != 0)
 			print_array(array, size);
-		}
-		heap(array, i, 0, size);
+		build_heap(array, i, 0, size);
 	}
 }
